@@ -18,10 +18,11 @@ function App() {
      const {data} = await Axios.get("https://api.covidindiatracker.com/state_data.json");
      //console.log(data[1].state);
       setDetails(data);
+      //console.log(details[0]);
   }
   const fetchDistrictData = async() => {
     const {data} = await Axios.get("https://api.covid19india.org/v2/state_district_wise.json");
-    console.log(data[36].districtData[4].district);
+    //console.log(data[36].districtData[4].district);
       setWestbengal(data[36].districtData)
       setAndaman(data[1].districtData);
       setAndhra(data[2].districtData);
@@ -33,11 +34,11 @@ function App() {
   }, [])
   return (
     <div>
-      {/* <States details={details}/> */}
       {/* <WestBengal westbengal={westbengal}/> */}
       {/* <Andaman andaman={andaman} /> */}
       {/* <Andhra andhra={andhra}/> */}
-      <Map/>
+      <Map details={details}/>
+      <States details={details}/>
     </div>
   )
 }
